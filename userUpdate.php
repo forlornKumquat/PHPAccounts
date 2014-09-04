@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['user'])){
-	$_SESSION['message'] = "How did you even get here?"
+	$_SESSION['message'] = "How did you even get here?";
 	header('Location: login.php');
 	die();
 }
@@ -15,29 +15,31 @@ if(isset($_POST['submit'])){
 	$delimiter = "";
 	$updated = "";
 
-	if(isset($_POST['ufirstname']))
+	if(($_POST['ufirstname']) != "")
 	{
-		$aVar = $db->mysql_real_escape_string($_POST['ufirstname']);
-		$aQuery = $aQuery . "uFirstName='" . $aVar . "'";
-		$delimeter = ",";
+		$aVar = $db->real_escape_string($_POST['ufirstname']);
+		$aQuery .= "uFirstName='" . $aVar . "' ";
 		$updated = "First Name";
+		$delimiter = ",";
 	}
-	if(isset($_POST['ulastname']))
+	if(($_POST['ulastname']) != "")
 	{
-		$aVar = $db->mysql_real_escape_string($_POST['ulastname']);
-		$aQuery = $aQuery . $delimiter . "uLastName='" . $aVar . "'";
-		$delimeter = ",";
-		$updated = $updated . $dellimiter . "Last Name";
+		$aVar = $db->real_escape_string($_POST['ulastname']);
+		$aQuery .= $delimiter . "uLastName='" . $aVar . "' ";
+		$updated .= $delimiter . "Last Name";
+		$delimiter = ",";
 	}
-	if(isset($_POST['ubirthdate']))
+	if(($_POST['ubirthdate']) != "")
 	{
 		//set regular expression here
 	}
 
-	$aQuery = $aQuery . " WHERE uEmail='" . $_SESSION['USER'] . "';";
+	$aQuery = $aQuery . " WHERE uEmail='" . $_SESSION['user'] . "';";
+
 	if (!mysqli_query($db, $aQuery)){
 		die('Error: ' . mysqli_error($db));
 	}
+
 	$_SESSION['message']="Updated: " . $updated . ".";
-	header('Location: index.php');
+	header('Location: account.php');
 }
