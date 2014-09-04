@@ -45,7 +45,7 @@ if(isset($_SESSION['message'])){
 
 		echo "You are logged in as " . $row['uEmail'] . "<hr>";
 		echo "<div>";
-		echo "<form action=\"userUpdate.php\" method=\"post\">"
+		echo "<form action=\"userUpdate.php\" method=\"post\">";
 		echo "<table>";
 	//		echo "<tr><td align=\"right\">Email:</td><td>" . $row['uEmail'] . "</td></td><td></td></tr>";
 			echo "<tr><td align=\"right\">First name:</td><td>" . $row['uFirstName'] . "</td><td><input type=\"text\" name=\"ufirstname\"></td></tr>";
