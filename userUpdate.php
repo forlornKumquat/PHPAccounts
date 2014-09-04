@@ -6,10 +6,38 @@ if(!isset($_SESSION['user'])){
 	die();
 }
 
-include 'includes/dbVar.php';
-include 'includes/dbCon.php';
+if(isset($_POST['submit'])){
 
-if(isset($_POST['']))
-{
-	
+	include 'includes/dbVar.php';
+	include 'includes/dbCon.php';
+
+	$aQuery = "UPDATE userData SET ";
+	$delimiter = "";
+	$updated = "";
+
+	if(isset($_POST['ufirstname']))
+	{
+		$aVar = $db->mysql_real_escape_string($_POST['ufirstname']);
+		$aQuery = $aQuery . "uFirstName='" . $aVar . "'";
+		$delimeter = ",";
+		$updated = "First Name";
+	}
+	if(isset($_POST['ulastname']))
+	{
+		$aVar = $db->mysql_real_escape_string($_POST['ulastname']);
+		$aQuery = $aQuery . $delimiter . "uLastName='" . $aVar . "'";
+		$delimeter = ",";
+		$updated = $updated . $dellimiter . "Last Name";
+	}
+	if(isset($_POST['ubirthdate']))
+	{
+		//set regular expression here
+	}
+
+	$aQuery = $aQuery . " WHERE uEmail='" . $_SESSION['USER'] . "';";
+	if (!mysqli_query($db, $aQuery)){
+		die('Error: ' . mysqli_error($db));
+	}
+	$_SESSION['message']="Updated: " . $updated . ".";
+	header('Location: index.php');
 }
