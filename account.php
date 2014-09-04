@@ -43,7 +43,7 @@ if(isset($_SESSION['message'])){
 		$row = $result->fetch_assoc();
 		$result->free();
 
-		echo "<hr>You are logged in as " . $row['uEmail'] . "<hr>";
+		echo "You are logged in as " . $row['uEmail'] . "<hr>";
 		echo "<div>";
 		echo "<table>";
 	//		echo "<tr><td align=\"right\">Email:</td><td>" . $row['uEmail'] . "</td></td><td></td></tr>";

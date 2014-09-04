@@ -10,6 +10,6 @@ else{
 }
 
 if(isset($_SESSION['message'])){
-	echo "<hr>" . $_SESSION['message'] . "<hr>";
+	echo "<hr><h6>" . $_SESSION['message'] . "</h6><hr>";
 	unset($_SESSION['message']);
 }
