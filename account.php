@@ -47,9 +47,10 @@ if(isset($_SESSION['message'])){
 		echo "<div>";
 		echo "<table>";
 	//		echo "<tr><td align=\"right\">Email:</td><td>" . $row['uEmail'] . "</td></td><td></td></tr>";
-			echo "<tr><td align=\"right\">First name:</td><td>" . $row['uFirstName'] . "</td><td><input type=\"text\" id=\"ufirstname\"></td><td><input type=\"button\" value=\"Change\" onclick=\"submitFirstname()\"></td></tr>";
-			echo "<tr><td align=\"right\">Last name:</td><td>" . $row['uLastName'] . "</td><td><input type=\"text\" id=\"ulastname\"></td><td><input type=\"button\" value=\"Change\" onclick=\"submitLastname()\"></td></tr>";
-			echo "<tr><td align=\"right\">DOB:</td><td>" . $row['uBirthDate'] . "</td><td><input type=\"text\" placeholder=\"YYYY-MM-DD\"  id=\"ubirthdate\"></td><td><input type=\"button\" value=\"Change\" onclick=\"submitBirthdate()\"></td></tr>";
+			echo "<tr><td align=\"right\">First name:</td><td>" . $row['uFirstName'] . "</td><td><input type=\"text\" name=\"ufirstname\"></td></tr>";
+			echo "<tr><td align=\"right\">Last name:</td><td>" . $row['uLastName'] . "</td><td><input type=\"text\" name=\"ulastname\"></td></tr>";
+			echo "<tr><td align=\"right\">DOB:</td><td>" . $row['uBirthDate'] . "</td><td><input type=\"text\" placeholder=\"YYYY-MM-DD\"  name=\"ubirthdate\"></td></tr>";
+			echo "<tr><td></td><td></td><td><input type=\"submit\" name=\"submit\" value=\"Submit\"/></td></tr>";
 		echo "</table>";
 		echo "</div>";
 	}
